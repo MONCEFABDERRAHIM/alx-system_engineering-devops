@@ -1,4 +1,9 @@
 #!/bin/bash
-set
-printenv
-declare -F
+
+echo "Local variables:"
+declare -p | awk -F= '/declare --/ {print "\t"$1}'
+echo "Environment variables:"
+printenv | awk -F= '{print "\t"$1}'
+echo "Functions:"
+declare -F | awk '{print "\t"$3}'
+
