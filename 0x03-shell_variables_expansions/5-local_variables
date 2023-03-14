@@ -1,4 +1,5 @@
 #!/bin/bash
-local_vars=$(set -o posix ; set)
-env_vars=$(printenv)
-function_list=$(declare -F)
+
+set
+printenv
+declare -F
