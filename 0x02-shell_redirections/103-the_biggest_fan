@@ -1,0 +1,9 @@
+#!/bin/bash
+awk '{
+  count[$1]++
+}
+END {
+  for (ip in count)
+    print ip, count[ip]
+}
+' "$@" | sort -rnk 2 | head -n 11 | awk '{print $1}'
