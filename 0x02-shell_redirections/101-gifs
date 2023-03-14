@@ -1,0 +1,13 @@
+#!/bin/bash
+
+shopt -s nullglob
+shopt -s globstar
+shopt -s nocaseglob
+
+for file in **/*.gif; do
+    if [[ -f "$file" ]]; then
+        filename=$(echo "${file%.*}" | awk -F/ '{print $NF}')
+        echo "$filename"
+    fi
+done | sort -f -d | tr '\n' '\0' | xargs -0 -I {} echo "{}"
+
