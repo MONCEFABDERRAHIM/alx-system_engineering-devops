@@ -1,9 +1,2 @@
 #!/bin/bash
-awk '{
-  count[$1]++
-}
-END {
-  for (ip in count)
-    print ip, count[ip]
-}
-' "$@" | sort -rnk 2 | head -n 11 | awk '{print $1}'
+tail -n +2 | cut -f1 | sort | uniq -c | sort -nr | head -11 | tr -s ' ' | cut -d' ' -f3

@@ -1,13 +1,2 @@
 #!/bin/bash
-
-# Vérifier si un fichier est fourni en entrée
-if [[ $# -ne 1 ]]; then
-  echo "Usage: $0 filename"
-  exit 1
-fi
-
-# Récupérer le contenu du fichier et extraire le premier caractère de chaque ligne
-message=$(cat $1 | awk '{print substr($0,1,1)}')
-
-# Afficher le message décodé
-echo $message
+cut -b 1 | tr -d '\n' | uniq
